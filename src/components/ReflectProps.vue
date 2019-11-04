@@ -16,11 +16,6 @@ export default {
     year: Number,
     month: Number,
     time: String
-  },
-  watch: {
-    time: function() {
-      console.log(this.props.time);
-    }
   }
 };
 </script>

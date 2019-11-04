@@ -15,10 +15,12 @@ export default {
   components: {
     ReflectProps
   },
-  data: {
-    year: undefined,
-    month: undefined,
-    time: undefined
+  data: function() {
+    return {
+      year: undefined,
+      month: undefined,
+      time: undefined
+    };
   },
   methods: {
     receiveEvent: function() {
@@ -33,7 +35,6 @@ export default {
           that.year = data.year;
           that.month = data.month;
           that.time = data.time;
-          console.log(that.time);
         },
         false
       );
