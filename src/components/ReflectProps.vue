@@ -1,7 +1,5 @@
 <template>
   <div>
-    <div>year: {{ year }}</div>
-    <div>month: {{ month }}</div>
     <div>time: {{ time }}</div>
   </div>
 </template>
@@ -13,8 +11,6 @@ export default {
   name: "ReflectProps",
 
   props: {
-    year: Number,
-    month: Number,
     time: String
   }
 };
