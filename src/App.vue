@@ -22,7 +22,7 @@ export default {
       );
       evtSource.addEventListener(
         "periodic-event",
-        function(e) {
+        e => {
           const data = JSON.parse(e.data);
           this.time = data.time;
         },
