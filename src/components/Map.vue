@@ -76,5 +76,6 @@ export default {
 }
 .map_area > .place {
   position: absolute;
+  transition: 1s;
 }
 </style>
