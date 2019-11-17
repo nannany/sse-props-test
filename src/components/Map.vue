@@ -3,7 +3,7 @@
     <div>{{ x }}</div>
     <div>{{ y }}</div>
     <div>{{ guard_mode }}</div>
-    <img :src="blobUrl" />
+    <img :src="blobUrl1" />
     <img class="place" :style="styleObject" src="/place.svg" />
   </div>
 </template>
@@ -17,7 +17,8 @@ export default {
   name: "Map",
   data: function() {
     return {
-      blobUrl: String,
+      blobUrl1: String,
+      blobUrl2: String,
       styleObject: {
         top: "500px",
         left: "500px"
@@ -33,10 +34,10 @@ export default {
     getMap: function() {
       axios({
         method: "GET",
-        url: "https://webflux-sse-demo.herokuapp.com/map",
+        url: "https://webflux-sse-demo.herokuapp.com/map?fileName=map.jpg",
         responseType: "blob"
       }).then(response => {
-        this.blobUrl = URL.createObjectURL(response.data);
+        this.blobUrl1 = URL.createObjectURL(response.data);
       });
     },
     updatePlace: () => {
@@ -61,7 +62,26 @@ export default {
     calculateXY: function() {
       console.log("thisx" + this.x + ":thisy" + this.y);
       this.styleObject = { left: this.x + "px", top: this.y + "px" };
-      this.blobUrl = this.x;
+    },
+    guard_mode: function() {
+      if (this.guard_mode === 1) {
+        axios({
+          method: "GET",
+          url: "https://webflux-sse-demo.herokuapp.com/map?fileName=rugby.svg",
+          responseType: "blob"
+        }).then(response => {
+          this.blobUrl2 = URL.createObjectURL(response.data);
+        });
+      } else if (this.guard_mode === 2) {
+        axios({
+          method: "GET",
+          url:
+            "https://webflux-sse-demo.herokuapp.com/map?fileName=triangle.svg",
+          responseType: "blob"
+        }).then(response => {
+          this.blobUrl2 = URL.createObjectURL(response.data);
+        });
+      }
     }
   }
 };
